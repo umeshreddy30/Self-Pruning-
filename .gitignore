@@ -1,0 +1,22 @@
+## Python
+__pycache__/
+*.py[cod]
+*.pyd
+.Python
+
+## Virtual environments
+.venv/
+venv/
+ENV/
+
+## Jupyter / misc
+.ipynb_checkpoints/
+
+## Project artifacts
+self_pruning_nn/data/
+self_pruning_nn/outputs/
+self_pruning_nn/outputs_smoke/
+
+## Local databases / logs
+self_pruning_nn/api/app.db
+

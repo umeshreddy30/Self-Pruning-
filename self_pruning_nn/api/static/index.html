@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Self-Pruning Dashboard</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  </head>
+  <body>
+    <header class="header">
+      <div class="header__title">
+        <div class="h1">Self-Pruning NN</div>
+        <div class="subtitle">FastAPI + RAG + SQL — Dashboard</div>
+      </div>
+      <div class="header__status" id="statusPill">Loading…</div>
+    </header>
+
+    <main class="grid">
+      <section class="card">
+        <div class="card__title">Run info</div>
+        <div class="kv" id="runInfo"></div>
+      </section>
+
+      <section class="card">
+        <div class="card__title">Lambda sweep (accuracy vs sparsity)</div>
+        <div class="card__body">
+          <canvas id="sweepChart" height="120"></canvas>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card__title">Sweep results table</div>
+        <div class="card__body">
+          <table class="table" id="sweepTable">
+            <thead>
+              <tr>
+                <th>lam</th>
+                <th>best test acc</th>
+                <th>final sparsity</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card__title">Recent RAG logs</div>
+        <div class="card__body">
+          <table class="table" id="ragTable">
+            <thead>
+              <tr>
+                <th>time</th>
+                <th>question</th>
+                <th>top_k</th>
+                <th>model</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="card__title">Recent prediction logs</div>
+        <div class="card__body">
+          <table class="table" id="predTable">
+            <thead>
+              <tr>
+                <th>time</th>
+                <th>filename</th>
+                <th>class</th>
+                <th>confidence</th>
+              </tr>
+            </thead>
+            <tbody></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div>Endpoints: <code>/dashboard/sweep</code>, <code>/logs/rag/recent</code>, <code>/logs/predictions/recent</code></div>
+      <div class="muted">Refreshes automatically every 10s</div>
+    </footer>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>
+
